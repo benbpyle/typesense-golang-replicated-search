@@ -2,7 +2,7 @@
   "name": "golang-typesense",
   "version": "0.1.0",
   "bin": {
-    "golang-typesense": "bin/golang-typesense.js"
+    "golang-typesense": "infra/bin/golang-typesense.js"
   },
   "scripts": {
     "build": "tsc",
@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "aws-cdk-lib": "2.148.1",
+    "@aws-cdk/aws-lambda-go-alpha": "^2.148.1-alpha.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
   }
 }
+
