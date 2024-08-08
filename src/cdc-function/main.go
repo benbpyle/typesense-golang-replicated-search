@@ -31,7 +31,7 @@ func handler(ctx context.Context, event events.DynamoDBEvent) (interface{}, erro
 		}).Info("Recipe made")
 
 		typesenseRecipe := lib.NewRecipeTypesenseFromRecipe(recipe)
-		_, err := client.Collection("recipes").Documents().Upsert(context.Background(), typesenseRecipe)
+		_, err := client.Collection("recipes").Documents().Upsert(ctx, typesenseRecipe)
 		if err != nil {
 			logrus.Errorf("Error creating new Typesense document: %s", err)
 		}

@@ -15,6 +15,8 @@ export default class CdcFunctionConstruct extends Construct {
       functionName: "typesense-demo-cdc-function",
       timeout: Duration.seconds(30),
       environment: {
+        TYPESENSE_CLUSTER_URL: process.env.TYPESENSE_CLUSTER_URL!,
+        TYPESENSE_API_KEY: process.env.TYPESENSE_API_KEY!,
         LOG_LEVEL: "debug",
         TABLE_NAME: table.tableName,
       },

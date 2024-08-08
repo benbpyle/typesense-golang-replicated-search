@@ -8,8 +8,6 @@ import (
 	"github.com/typesense/typesense-go/v2/typesense/api"
 )
 
-// SearchDocuments interacts with the Typesense cluster and returns the documents that
-// have been searched in a slice of Recipes
 func SearchDocuments(ctx context.Context, client *typesense.Client, query string) ([]Recipe, error) {
 	queryBy := "name"
 	sortBy := "createdTimestamp:desc"

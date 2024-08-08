@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "604e5766-57d8-467f-a729-1d424440f09c",
+		"name": "Typesense API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1502343"
+	},
+	"item": [
+		{
+			"name": "Create Recipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"author\": \"New Author\",\n    \"name\": \"Somthing useful\",\n    \"description\": \"A useful new recipe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{API_HOST}}/{{API_STAGE}}",
+					"protocol": "https",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"{{API_STAGE}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{API_HOST}}/{{API_STAGE}}/search",
+					"protocol": "https",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"{{API_STAGE}}",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

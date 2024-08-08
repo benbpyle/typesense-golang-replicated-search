@@ -20,6 +20,8 @@ export default class SearchFunctionConstruct extends Construct {
       timeout: Duration.seconds(30),
       environment: {
         LOG_LEVEL: "debug",
+        TYPESENSE_CLUSTER_URL: process.env.TYPESENSE_CLUSTER_URL!,
+        TYPESENSE_API_KEY: process.env.TYPESENSE_API_KEY!,
       },
     });
 
