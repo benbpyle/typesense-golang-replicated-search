@@ -7,7 +7,7 @@ import { DynamoEventSource } from "aws-cdk-lib/aws-lambda-event-sources";
 import { StartingPosition } from "aws-cdk-lib/aws-lambda";
 
 export default class CdcFunctionConstruct extends Construct {
-  constructor(scope: Construct, id: string, table: Table) {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     const func = new GoFunction(scope, "CdcFunction", {
@@ -18,15 +18,15 @@ export default class CdcFunctionConstruct extends Construct {
         TYPESENSE_CLUSTER_URL: process.env.TYPESENSE_CLUSTER_URL!,
         TYPESENSE_API_KEY: process.env.TYPESENSE_API_KEY!,
         LOG_LEVEL: "debug",
-        TABLE_NAME: table.tableName,
+        // TABLE_NAME: table.tableName,
       },
     });
 
-    func.addEventSource(
-      new DynamoEventSource(table, {
-        startingPosition: StartingPosition.LATEST,
-      }),
-    );
-    table.grantStream(func);
+    // func.addEventSource(
+    //   new DynamoEventSource(table, {
+    //     startingPosition: StartingPosition.LATEST,
+    //   }),
+    // );
+    // table.grantStream(func);
   }
 }

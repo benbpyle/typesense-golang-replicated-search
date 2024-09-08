@@ -25,13 +25,16 @@ func handler(ctx context.Context, event events.DynamoDBEvent) (interface{}, erro
 			continue
 		}
 
-		recipe := lib.NewRecipeFromStreamRecord(v)
+		todo := lib.NewTodoFromStreamRecord(v)
 		logrus.WithFields(logrus.Fields{
-			"recipe": recipe,
-		}).Info("Recipe made")
+			"todo": todo,
+		}).Info("Todo made")
 
-		typesenseRecipe := lib.NewRecipeTypesenseFromRecipe(recipe)
-		_, err := client.Collection("recipes").Documents().Upsert(ctx, typesenseRecipe)
+		typesenseTodo := lib.NewTodoTypesenseFromTodo(todo)
+		logrus.WithFields(logrus.Fields{
+			"todoTypesense": typesenseTodo,
+		}).Info("TodoTypesense made")
+		_, err := client.Collection("todos").Documents().Upsert(ctx, typesenseTodo)
 		if err != nil {
 			logrus.Errorf("Error creating new Typesense document: %s", err)
 		}
